@@ -1,0 +1,7 @@
+= Configuration Service
+:toc: right
+
+Application to provide the configuration files used in the `home-monitor` application.
+
+IMPORTANT: This application has to be started before starting another application of the `home-monitor` applications.
+ If it is not present, no configuration can be found during startup and it will fail to start.

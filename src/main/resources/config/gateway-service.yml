@@ -1,0 +1,25 @@
+spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+      - id: user-service
+        uri: lb://user-service
+        predicates:
+        - Path=/user/**
+        filters:
+        - RewritePath=/user/(?<segment>.*), /$\{segment}
+      - id: documentation-service
+        uri: lb://documentation-service
+        predicates:
+        - Path=/docs/**
+        filters:
+        - RewritePath=/docs/(?<segment>.*), /$\{segment}
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${DISCOVERY_SERVICE_URL:http://localhost:8061}/eureka/
+server:
+  port: ${PORT:8080}

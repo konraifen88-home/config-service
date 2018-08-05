@@ -1,0 +1,13 @@
+server:
+  port: ${PORT:8059}
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${DISCOVERY_SERVICE_URL:http://localhost:8061}/eureka/
+
+zuul:
+  routes:
+    user:
+      path: /user/**
+      serviceId: user-service
