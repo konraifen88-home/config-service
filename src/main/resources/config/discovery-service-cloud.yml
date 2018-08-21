@@ -1,0 +1,26 @@
+server:
+  port: ${vcap.application.port:8061}
+
+management:
+  cloudfoundry:
+    enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+eureka:
+  instance:
+    hostname: ${vcap.application.uris[0]:localhost}
+    nonSecurePortEnabled: false
+    securePortEnabled: true
+    securePort: ${server.port}
+    statusPageUrl: https://${eureka.instance.hostname}/actuator/info
+    healthCheckUrl: https://${eureka.instance.hostname}/actuator/health
+    homePageUrl: https://${eureka.instance.hostname}/
+    secure-virtual-host-name: https://${vcap.application.application_uris[0]}
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
