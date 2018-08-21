@@ -12,7 +12,7 @@ management:
 eureka:
   client:
     serviceUrl:
-      defaultZone: ${DISCOVERY_SERVICE_URL:http://localhost:8061}/eureka/
+      defaultZone: ${DISCOVERY_SERVICE_URL}/eureka/
   instance:
     hostname: ${vcap.application.uris[0]:localhost}
     nonSecurePortEnabled: false

@@ -17,13 +17,13 @@ spring:
           enabled: true
       routes:
       - id: user-service
-        uri: lb://user-service
+        uri:  https://kg-test-user-service.run.aws-usw02-pr.ice.predix.io
         predicates:
         - Path=/user/**
         filters:
         - RewritePath=/user/(?<segment>.*), /$\{segment}
       - id: documentation-service
-        uri: lb://docs-service
+        uri:  https://kg-test-docs-service.run.aws-usw02-pr.ice.predix.io
         predicates:
         - Path=/docs/**
         filters:
