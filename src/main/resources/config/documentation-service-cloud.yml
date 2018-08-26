@@ -17,7 +17,7 @@ eureka:
     hostname: ${vcap.application.uris[0]}
     nonSecurePortEnabled: false
     securePortEnabled: true
-    securePort: ${server.port}
+    securePort: 443
     statusPageUrl: https://${eureka.instance.hostname}/actuator/info
     healthCheckUrl: https://${eureka.instance.hostname}/actuator/health
     homePageUrl: https://${eureka.instance.hostname}/

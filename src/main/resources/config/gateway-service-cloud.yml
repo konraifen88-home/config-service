@@ -17,13 +17,13 @@ spring:
           enabled: true
       routes:
       - id: user-service
-        uri:  https://kg-test-user-service.run.aws-usw02-pr.ice.predix.io
+        uri:  lb://user-service
         predicates:
         - Path=/user/**
         filters:
         - RewritePath=/user/(?<segment>.*), /$\{segment}
       - id: documentation-service
-        uri:  https://kg-test-docs-service.run.aws-usw02-pr.ice.predix.io
+        uri:  lb://documentation-service
         predicates:
         - Path=/docs/**
         filters:
@@ -36,7 +36,7 @@ eureka:
     hostname: ${vcap.application.uris[0]:localhost}
     nonSecurePortEnabled: false
     securePortEnabled: true
-    securePort: ${server.port}
+    securePort: 443
     statusPageUrl: https://${eureka.instance.hostname}/actuator/info
     healthCheckUrl: https://${eureka.instance.hostname}/actuator/health
     homePageUrl: https://${eureka.instance.hostname}/
