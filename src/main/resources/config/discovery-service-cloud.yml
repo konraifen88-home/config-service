@@ -1,5 +1,5 @@
 server:
-  port: ${vcap.application.port:8061}
+  port: ${vcap.application.port}
 
 management:
   cloudfoundry:
@@ -11,7 +11,7 @@ management:
 
 eureka:
   instance:
-    hostname: ${vcap.application.uris[0]:localhost}
+    hostname: ${vcap.application.uris[0]}
     nonSecurePortEnabled: false
     securePortEnabled: true
     securePort: ${server.port}
